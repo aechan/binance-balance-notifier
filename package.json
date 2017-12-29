@@ -1,0 +1,16 @@
+{
+  "name": "binance-balance-notifier",
+  "version": "1.0.0",
+  "description": "Get hourly or daily notifications of the balances in your binance account.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alec Chan",
+  "license": "ISC",
+  "dependencies": {
+    "node-binance-api": "^0.3.0",
+    "node-notifier": "^5.1.2",
+    "node-schedule": "^1.2.5"
+  }
+}
