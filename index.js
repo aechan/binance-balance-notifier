@@ -12,7 +12,8 @@ var config = {
     notify_interval: 'hourly',
     optional_daily_notify_hour: 12,
     binance_api_key: '',
-    binance_api_secret: ''
+    binance_api_secret: '',
+    notification_detail: 'basic'
 };
 
 // first check if the .bbnotifier dir exists
@@ -69,19 +70,28 @@ var balance_update = function (data) {
             }
         }
 
-        assetstr += "ACCT Value: $" + USDBalance;
+        assetstr += "ACCT Value: $" + USDBalance.toPrecision(4);
         console.log(assetstr);
+
+        // build the notification message based on if the user wants a detailed view of their
+        // account or if they want a basic USD value of their account.
+        var message = '';
+        if(config.notification_detail.toLowerCase() === 'basic') {
+            message = "Current Value: $" + USDBalance.toPrecision(4);
+        } else if (config.notification_detail.toLowerCase() === 'detailed') {
+            message = assetstr;
+        }
+
+        // fire notification
         notifier.notify({
             'title': 'Your Binance Account',
-            'message': "Current Value: $" + USDBalance.toPrecision(4),
+            'message': message,
             'icon': path.join(os.homedir(), '.bbnotifier', 'binance.png')
         });
     });
-    
-    
 }
 
-// build our notification
+// call our notification
 const notify = function() {
     binance.balance(function(balances) {
         balance_update(balances);

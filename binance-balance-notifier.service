@@ -1,0 +1,9 @@
+[Unit]
+Description=foo
+
+[Service]
+User=%I
+ExecStart=/usr/bin/node /usr/bin/bbnotifier/index.js
+
+[Install]
+WantedBy=multi-user.target
