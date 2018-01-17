@@ -4,6 +4,7 @@ Description=foo
 [Service]
 User=%I
 ExecStart=/usr/bin/node /usr/bin/bbnotifier/index.js
+StandardOutput=syslog
 
 [Install]
 WantedBy=multi-user.target
