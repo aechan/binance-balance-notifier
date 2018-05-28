@@ -1,4 +1,7 @@
 # binance-balance-notifier
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/aechan/binance-balance-notifier.svg)](https://greenkeeper.io/)
+
 Notifies you of the balance in your Binance account at hourly or daily intervals.
 Uses node-notifier to send you desktop notifications on most platforms (Gnome, macOS and Windows are known to work for sure)
 ## Installation/Usage
